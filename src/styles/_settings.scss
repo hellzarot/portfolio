@@ -1,0 +1,68 @@
+$color-green :#16f016;
+$color-black : #000;
+$color-white: #fff;
+$pading-top: 1vw;
+$size-picture : 25vw;
+
+@mixin verticalCenter {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+
+
+body {
+    
+    margin: 0;
+    padding: 0;
+    color: $color-green;
+    background-color: $color-black;
+    
+}
+
+button {
+    cursor:pointer;
+}
+li {
+    list-style-type: none;
+}
+a {
+    text-decoration: none;
+    color: $color-green;
+    cursor: pointer;
+}
+a:visited {
+    color: $color-green;
+}
+
+
+.homeContent{
+  
+    padding-top: $pading-top;
+}
+.aboutContent{
+    
+    padding-top: $pading-top;
+}
+.skillsContent{
+    
+    padding-top: $pading-top;
+}
+.contactContent{
+  
+    padding-top: $pading-top;
+}
+.toolsContent{
+    
+    padding-top: $pading-top;
+}
+.notFoundContent{
+    
+    padding-top: $pading-top;
+}
+.pictureProfileHome{
+    max-width: $size-picture;
+}
