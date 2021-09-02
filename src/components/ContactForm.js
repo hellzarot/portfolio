@@ -1,4 +1,7 @@
 import React from "react";
+import axios from 'axios';
+
+const API_PATH = 'http://localhost:8000/api/contact/action_contact.php';
 
 class ContactForm extends React.Component {
 
@@ -14,10 +17,21 @@ class ContactForm extends React.Component {
                 }
               }
 
-              handleFormSubmit( Event ) {
-                Event.preventDefault();
-                console.log(this.state);
-              }
+              handleFormSubmit = e => {
+                e.preventDefault();
+                axios({
+                  method: 'post',
+                  url: `${API_PATH}`,
+                  headers: { 'content-type': 'application/json' },
+                  data: this.state
+                })
+                  .then(result => {
+                    this.setState({
+                      mailSent: result.data.sent
+                    })
+                  })
+                  .catch(error => this.setState({ error: error.message }));
+              };
               
 
         render () {
@@ -26,7 +40,7 @@ class ContactForm extends React.Component {
         <div className="contactContent">
                     <h1>Contactez Moi</h1>
                 <div>
-                        <form action="http://localhost:8000/api/contact/action_contact.php" method="POST">
+                        <form action="#">
                         <label for="fname">Prénom</label>
                         <input type="text"id="fname"name="firstname"placeholder="Votre prénom" value={this.state.fname}
     onChange={e => this.setState({ fname: e.target.value })}/>
@@ -43,8 +57,13 @@ class ContactForm extends React.Component {
                         <label for="message">Messsage</label>
                         <textarea id="message"name="message"placeholder="M'écrire un message" value={this.state.message}
     onChange={e => this.setState({ message: e.target.value })}></textarea>
-                        <input type="submit"  value="Envoyez"/>
-                        </form>
+                        <input type="submit" onClick={e => this.handleFormSubmit(e)} value="Submit" />
+                        <div>
+                                {this.state.mailSent &&
+                                <div>Thank you for contcting us.</div>
+                                }
+                         </div>
+                        </form >
                 </div>
         </div>  
         )

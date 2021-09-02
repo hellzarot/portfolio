@@ -1,9 +1,37 @@
 <?php
+// Allow from any origin
+if(isset($_SERVER["HTTP_ORIGIN"]))
+{
+    // You can decide if the origin in $_SERVER['HTTP_ORIGIN'] is something you want to allow, or as we do here, just allow all
+    header("Access-Control-Allow-Origin: {$_SERVER['HTTP_ORIGIN']}");
+}
+else
+{
+    //No HTTP_ORIGIN set, so we allow any. You can disallow if needed here
+    header("Access-Control-Allow-Origin: *");
+}
+
+header("Access-Control-Allow-Credentials: true");
+header("Access-Control-Max-Age: 600");    // cache for 10 minutes
+
+if($_SERVER["REQUEST_METHOD"] == "OPTIONS")
+{
+    if (isset($_SERVER["HTTP_ACCESS_CONTROL_REQUEST_METHOD"]))
+        header("Access-Control-Allow-Methods: POST, GET, OPTIONS, DELETE, PUT"); //Make sure you remove those you do not want to support
+
+    if (isset($_SERVER["HTTP_ACCESS_CONTROL_REQUEST_HEADERS"]))
+        header("Access-Control-Allow-Headers: {$_SERVER['HTTP_ACCESS_CONTROL_REQUEST_HEADERS']}");
+
+    //Just exit with 200 OK with the above headers for OPTIONS method
+    exit(0);
+}
+//From here, handle the request as it is ok
+
 //Import the PHPMailer class into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 
 require '../../vendor/autoload.php';
-header("Access-Control-Allow-Origin: *");
+
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
@@ -15,24 +43,26 @@ if ($_POST)
 	// set response code - 200 OK
 
 	http_response_code(200);
-	$subject = $_POST['fname'];
-	$to = "me@malith.pro";
-	$from = $_POST['email'];
+	$to = "julien.lambin83@gmail.com";
+	$firstname = $_POST['fname'][0];
+    $lastname = $_POST['lname'];
+	$email = $_POST['email'];
+    $message = $_POST['message'];
 
 	// data
 
-	$msg = $_POST['number'] . $_POST['message'];
+	
 
 	// Headers
 
 	$headers = "MIME-Version: 1.0\r\n";
 	$headers.= "Content-type: text/html; charset=UTF-8\r\n";
-	$headers.= "From: <" . $from . ">";
-	mail($to, $subject, $msg, $headers);
+	$headers.= "From: <" . $email . ">";
+	mail($to, "Contact Portfolio", $message, $headers);
 
 	// echo json_encode( $_POST );
 
-	echojson_encode(array(
+	echo json_encode(array(
 		"sent" => true
 	));
 	}
@@ -100,28 +130,28 @@ $mail->Password = 'Ereul9Aeng';
 
 
 //Set who the message is to be sent from
-$mail->setFrom('seedoseedkraken@gmail.com');
+//$mail->setFrom('seedoseedkraken@gmail.com');
 //Set an alternative reply-to address
 //$mail->addReplyTo('seedoseedkraken@gmail.com');
 //Set who the message is to be sent to
-$mail->addAddress('seedoseedkraken@gmail.com');
+//$mail->addAddress('seedoseedkraken@gmail.com');
 //Set the subject line
-$mail->Subject = 'Prise de contact Portfolio';
+//$mail->Subject = 'Prise de contact Portfolio';
 //Read an HTML message body from an external file, convert referenced images to embedded,
 //convert HTML into a basic plain-text alternative body
 //$mail->msgHTML(file_get_contents('contents.html'), __DIR__);
 //Replace the plain text body with one created manually
-$mail->Body = '$message';
+//$mail->Body = '$message';
 //Attach an image file
 //$mail->addAttachment('images/phpmailer_mini.png');
 
 //send the message, check for errors
-if (!$mail->send()) {
+/*if (!$mail->send()) {
     echo 'Erreur d\'envoi: ' . $mail->ErrorInfo;
 } else {
     echo 'Message envoyé!';
 }
-
+*/
 //$mail->Username = 'seedoseedkraken@gmail.com';
 //$mail->Password = 'Ereul9Aeng';
 //$mail->setFrom('seedoseedkraken@gmail.com');
