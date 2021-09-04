@@ -22,7 +22,9 @@ class ContactForm extends React.Component {
                 axios({
                   method: 'post',
                   url: `${API_PATH}`,
-                  headers: { 'content-type': 'application/json' },
+                  headers: { 'content-type': 'application/json',
+                  mode: 'cors',
+                  credentials: 'include' },
                   data: this.state
                 })
                   .then(result => {
@@ -31,7 +33,7 @@ class ContactForm extends React.Component {
                     })
                   })
                   .catch(error => this.setState({ error: error.message }));
-              };
+              }
               
 
         render () {
@@ -40,7 +42,7 @@ class ContactForm extends React.Component {
         <div className="contactContent">
                     <h1>Contactez Moi</h1>
                 <div>
-                        <form action="#">
+                        <form action="#" >
                         <label for="fname">Prénom</label>
                         <input type="text"id="fname"name="firstname"placeholder="Votre prénom" value={this.state.fname}
     onChange={e => this.setState({ fname: e.target.value })}/>
@@ -57,10 +59,10 @@ class ContactForm extends React.Component {
                         <label for="message">Messsage</label>
                         <textarea id="message"name="message"placeholder="M'écrire un message" value={this.state.message}
     onChange={e => this.setState({ message: e.target.value })}></textarea>
-                        <input type="submit" onClick={e => this.handleFormSubmit(e)} value="Submit" />
+                        <input type="submit" onClick={e => this.handleFormSubmit(e)}  value="Submit" />
                         <div>
                                 {this.state.mailSent &&
-                                <div>Thank you for contcting us.</div>
+                                <div>Merci de m'avoir contacté.</div>
                                 }
                          </div>
                         </form >
