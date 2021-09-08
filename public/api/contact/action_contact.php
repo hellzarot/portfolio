@@ -3,7 +3,7 @@
 //Import the PHPMailer class into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-require '../../vendor/autoload.php';
+require '../../../vendor/autoload.php';
 
 $config = parse_ini_file(__DIR__ . '/../../../src/config.ini');
 

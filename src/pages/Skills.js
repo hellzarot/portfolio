@@ -7,11 +7,7 @@ const Skills = () => {
             <Navigation/>
                 <div class="skillsContent">
                 <h1>Skills</h1>
-yarn import styled from 'styled-components/native';
 
-export const Container = styled.View`
-  
-`;
 
                 <div className="contentText frontEnd">
                     
