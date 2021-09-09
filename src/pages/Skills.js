@@ -1,9 +1,10 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 const Skills = () => {
     return (
-        <div>
+        <div className="skills">
             <Navigation/>
                 <div class="skillsContent">
                 <h1>Skills</h1>
@@ -56,6 +57,7 @@ const Skills = () => {
                     </ul>
                 </div>
                 </div>
+                <Footer/>
         </div>
     );
 };

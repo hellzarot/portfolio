@@ -7,6 +7,14 @@
      max-width: 420px;
      margin: 0 auto;
 }
+.contact{
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+.contactContent{
+    flex:1;
+}
  p {
      text-align: center;
      font-weight: 500;
@@ -40,4 +48,12 @@
 .contactResponse{
     margin:1.5em;
     font-size: 150%;
+}
+.contactError{
+    color: black;
+    font-size: x-large;
+    background-color: rgba(255, 0, 0, 0.514);;
+    border-radius: 4px;
+    margin: 1em;
+    
 }

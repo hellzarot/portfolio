@@ -1,10 +1,11 @@
 import React from 'react';
 import Navigation from '../components/Navigation';
+import Footer from '../components/Footer';
 
 
 const Tools = () => {
     return (
-        <div>
+        <div className="tools"> 
             <Navigation/>
             <div className="toolsContent">
                 <div>
@@ -29,7 +30,7 @@ const Tools = () => {
                 
                 </div>
             </div>
-
+            <Footer/>
         </div>
     );
 };

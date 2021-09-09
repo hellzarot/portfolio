@@ -3,7 +3,7 @@ $color-green :#16f016;
 $color-black : #000;
 $color-white: #fff;
 $pading-top: 1vw;
-$size-picture : 25vw;
+$size-picture : 35vh;
 
 @mixin verticalCenter {
     display:flex;
@@ -21,6 +21,8 @@ body {
     padding: 0;
     color: $color-green;
     background-color: $color-black;
+  
+
     
 }
 
@@ -43,6 +45,7 @@ a:visited {
 .homeContent{
   
     padding-top: $pading-top;
+   
 }
 .aboutContent{
     

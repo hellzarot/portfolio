@@ -3,9 +3,14 @@
 //Import the PHPMailer class into the global namespace
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
-require '../../../vendor/autoload.php';
 
-$config = parse_ini_file(__DIR__ . '/../../../src/config.ini');
+require './vendor/autoload.php';
+
+
+
+$config = parse_ini_file(__DIR__ . '/config.ini');
+
+
 
  // Allow from any origin
  if (isset($_SERVER['HTTP_ORIGIN'])) {
@@ -37,7 +42,7 @@ $mail->isSMTP();
 //SMTP::DEBUG_OFF = off (for production use)
 //SMTP::DEBUG_CLIENT = client messages
 //SMTP::DEBUG_SERVER = client and server messages
-              //$mail->SMTPDebug = 2;
+//$mail->SMTPDebug = 2;
 
 //Set the hostname of the mail server
 $mail->Host = 'smtp.gmail.com';
@@ -73,7 +78,7 @@ $mail->Password =  $config['mdp_smtp'];
 $rest_json = file_get_contents("php://input");
 $_POST = json_decode($rest_json, true);
 
-if (empty($_POST['fname']) | empty($_POST['lname'])  | empty($_POST['email']) | empty($_POST['message'])){   echo json_encode(["sent" => false, "message" => "Il manque des informations"]);}
+if (empty($_POST['fname']) | empty($_POST['lname'])  | empty($_POST['email']) | empty($_POST['message'])){   echo json_encode(["sent" => false, "message" => "Tu es pas censé lire cela, mais Il manque des informations"]);}
 
 if ($_POST)
 	{
@@ -108,13 +113,13 @@ $mail->Subject = $subject;
 
 
 //Replace the plain text body with one created manually
-$mail->Body = "Nouveau message de ". $firstname. ", ".$lastname. " : ". $body;
+$mail->Body = "Nouveau message de ". $firstname. ", ".$lastname. ", adresse mail: ". $email. " : ". $body;
 
 
 
 //send the message, check for errors
 if (!$mail->send()) {
-    echo json_encode(["sent" => false, "message" => "Something went wrong"]);
+    echo json_encode(["sent" => false, "message" => "Tu n'est pas censé lire cela, mais le mail n'est pas parti ..."]);
 } else {
     echo json_encode(array(
 		"sent" => true
