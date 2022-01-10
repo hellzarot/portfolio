@@ -16,11 +16,7 @@ const Navigation = () => {
                         <span>Qui suis-je ?</span>
                     </NavLink> 
                     </li>
-                    <li className="navbarLi">
-                    <NavLink exact to="/contact" activeClassName="nav-active">
-                        <span>Contact</span>
-                    </NavLink> 
-                    </li>
+                    
                     <li className="navbarLi">
                     <NavLink exact to="/competences" activeClassName="nav-active">
                         <span>Mes compétences</span>
@@ -29,6 +25,11 @@ const Navigation = () => {
                     <li className="navbarLi">
                     <NavLink exact to="/mes_outils" activeClassName="nav-active">
                         <span>Mes outils</span>
+                    </NavLink> 
+                    </li>
+                    <li className="navbarLi">
+                    <NavLink exact to="/contact" activeClassName="nav-active">
+                        <span>Contact</span>
                     </NavLink> 
                     </li>
                 </ul>

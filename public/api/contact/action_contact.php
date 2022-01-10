@@ -8,7 +8,7 @@ require './vendor/autoload.php';
 
 
 
-$config = parse_ini_file(__DIR__ . '/config.ini');
+$config = parse_ini_file(__DIR__ . '/.htpasswd');
 
 
 

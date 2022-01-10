@@ -1,6 +1,6 @@
 
 $color-green :#16f016;
-$color-black : #000;
+$color-black : rgb(58, 58, 58);
 $color-white: #fff;
 $pading-top: 1vw;
 $size-picture : 35vh;
@@ -19,7 +19,7 @@ body {
     
     margin: 0;
     padding: 0;
-    color: $color-green;
+    color: $color-white;
     background-color: $color-black;
   
 
@@ -34,11 +34,11 @@ li {
 }
 a {
     text-decoration: none;
-    color: $color-green;
+    color: $color-white;
     cursor: pointer;
 }
 a:visited {
-    color: $color-green;
+    color: $color-white;
 }
 
 

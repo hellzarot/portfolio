@@ -14,7 +14,7 @@ const Footer = () => (
       </div>
       <div className="footerDown">
         <p class="copyright">
-							© 2021 Julien Lambin, Tous droits réservés.
+							© { new Date().getFullYear()} Julien Lambin, Tous droits réservés.
 				</p>
       </div>
     

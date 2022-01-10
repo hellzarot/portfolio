@@ -4,6 +4,8 @@
   bottom: 0;
   width: 100%;
   margin-bottom: 2em;
+ 
+  background-color: black;
 
  
     
@@ -11,6 +13,7 @@
 
   }
 #footerUp{
+  margin: 0.5em;
   
     display: flex;
     justify-content: space-around;
@@ -23,6 +26,7 @@
       margin: 0.15em;
     }
   .footerDown{
+    margin: 0.5em;
     justify-content: space-between;
   }
  

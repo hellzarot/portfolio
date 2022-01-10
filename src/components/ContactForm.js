@@ -19,9 +19,7 @@ class ContactForm extends React.Component {
                 }
               }
             isEmail() {
-                 
-            
-               
+
                 let regex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
                 if(this.state.email.match(regex)) {
                   return true;
@@ -110,7 +108,7 @@ class ContactForm extends React.Component {
                         <input type="submit" onClick={e => this.handleFormSubmit(e)}  value="Envoyer le message" />
                         <div className="contactResponse">
                                 {this.state.mailSent &&
-                                <div>Merci de m'avoir contacté.</div>
+                                <div className="messageOk">Merci de m'avoir contacté.</div>
                                 }
                          </div>
                          <div className="contactError">
